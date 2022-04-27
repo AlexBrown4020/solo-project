@@ -6,7 +6,7 @@ scalar Date
 
 type Event {
     date: Date!
-    description: String
+    description: String!
 }
 
 type Actor {
@@ -20,22 +20,28 @@ type Query {
     Actor(name:String): Actor
 }
 
-# type Mutation {
+input AddEvent {
+    date: Date!
+    description: String!
+}
 
-# }
+type Mutation {
+    AddEvent(input:AddEvent): Event
+}
 
 `;
+
 const events = [
         {
-            date: "14/02/2022",
+            date: "2022-02-14",
             description: "CCP4 started Code Chrysalis."
         },
         {
-            date: "19/04/2022",
+            date: "2022-04-18",
             description: "CCP4 started their laundry week."
         },
         {
-            date: "26/04/2022",
+            date: "2022-04-26",
             description: "CCP4 started their solo projects."
         },
     ];
@@ -78,6 +84,12 @@ const resolvers = {
             for (let object of actors) {
                 if (object.name === args.name) return object
             }     
+        }
+    },
+    Mutation: {
+        AddEvent: (parent, args) => {
+            events.push(args.input);
+            return args.input;
         }
     }
 };
