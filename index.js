@@ -119,7 +119,15 @@ const resolvers = {
             }
         },
         DeleteEvent: (parent, args) => {
-
+            for (let object of events) {
+                if (args.title === object.title) {
+                    const index = events.indexOf(object);
+                    events.splice(index, 1)
+                    return "Event removed successfully"
+                } else {
+                    return "No event by that name."
+                }
+            }
         }
     }
 };
