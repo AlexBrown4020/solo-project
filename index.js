@@ -112,7 +112,6 @@ const resolvers = {
                 if (args.name === object.name) {
                     const index = actors.indexOf(object);
                     actors.splice(index, 1)
-                    console.log(actors);
                     return "Actor removed successfully"
                 } else {
                     return "No actor by that name."
