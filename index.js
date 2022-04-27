@@ -16,9 +16,10 @@ type Actor {
 }
 
 type Query {
-    Events: [Event]
-    Actors: [Actor]
-    Actor(name:String): Actor
+    AllEvents: [Event]
+    AllActors: [Actor]
+    FindActor(name:String): Actor
+    FindEvent(title:String): Event
 }
 
 input AddEvent {
@@ -90,11 +91,16 @@ const actors = [
 
 const resolvers = {
     Query: {
-        Events: () => events,
-        Actors: () => actors,
-        Actor: (parent, args) => {
+        AllEvents: () => events,
+        AllActors: () => actors,
+        FindEvent: (parent, args) => {
+            for (let object of events) {
+                if (object.title === args.title) return object;
+            }
+        },
+        FindActor: (parent, args) => {
             for (let object of actors) {
-                if (object.name === args.name) return object
+                if (object.name === args.name) return object;
             }     
         }
     },
