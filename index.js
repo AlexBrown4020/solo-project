@@ -6,7 +6,8 @@ scalar Date
 
 type Event {
     date: Date!
-    description: String!
+    title: String!
+    description: String
 }
 
 type Actor {
@@ -33,20 +34,25 @@ input AddActor {
 type Mutation {
     AddEvent(input:AddEvent): Event
     AddActor(input:AddActor): Actor
+    DeleteActor(name:String): String
+    DeleteEvent(title:String): String
 }
 
 `;
 
 const events = [
         {
+            title:"First Class",
             date: "2022-02-14",
             description: "CCP4 started Code Chrysalis."
         },
         {
+            title:"Half Way",
             date: "2022-04-18",
             description: "CCP4 started their laundry week."
         },
         {
+            title:"First Projects",
             date: "2022-04-26",
             description: "CCP4 started their solo projects."
         },
@@ -100,6 +106,21 @@ const resolvers = {
         AddActor: (parent, args) => {
             actors.push(args.input);
             return args.input;
+        },
+        DeleteActor: (parent, args) => {
+            for (let object of actors) {
+                if (args.name === object.name) {
+                    const index = actors.indexOf(object);
+                    actors.splice(index, 1)
+                    console.log(actors);
+                    return "Actor removed successfully"
+                } else {
+                    return "No actor by that name."
+                }
+            }
+        },
+        DeleteEvent: (parent, args) => {
+
         }
     }
 };
