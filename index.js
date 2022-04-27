@@ -25,8 +25,14 @@ input AddEvent {
     description: String!
 }
 
+input AddActor {
+    name: String!
+    country: String
+}
+
 type Mutation {
     AddEvent(input:AddEvent): Event
+    AddActor(input:AddActor): Actor
 }
 
 `;
@@ -89,6 +95,10 @@ const resolvers = {
     Mutation: {
         AddEvent: (parent, args) => {
             events.push(args.input);
+            return args.input;
+        },
+        AddActor: (parent, args) => {
+            actors.push(args.input);
             return args.input;
         }
     }
