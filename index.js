@@ -32,11 +32,24 @@ input AddActor {
     country: String
 }
 
+input UpdateEvent {
+    title: String
+    date: Date
+    description: String
+}
+
+input UpdateActor {
+    name: String
+    country: String
+}
+
 type Mutation {
     AddEvent(input:AddEvent): Event
     AddActor(input:AddActor): Actor
     DeleteActor(name:String): String
     DeleteEvent(title:String): String
+    UpdateActor(name:String!, input:UpdateActor): String
+    UpdateEvent(title:String!, input:UpdateEvent): String
 }
 
 `;
@@ -134,8 +147,26 @@ const resolvers = {
                     return "No event by that name."
                 }
             }
-        }
-    }
+        },
+        UpdateActor: (parent, args) => {
+            for (let object of actors) {
+                if (object.name === args.name) {
+                    const index = actors.indexOf(object);
+                    actors[index] = args.input;
+                    return "Actor updated successfully"
+                }
+            }    
+            return "No actor found with that name"
+            }
+        },
+        // UpdateEvent: (parent, args) => {
+        //     for (let object of events) {
+        //         if (object.title === args.title){
+        //             object = args.input;
+        //             return object;
+        //         }
+        //     }
+        // }
 };
 
 const PORT = process.env.PORT || 4000;
