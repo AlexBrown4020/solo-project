@@ -8,15 +8,17 @@ module.exports = {
         AllActors: async () => {
             return await db('actors').select('*');
         },
-        FindEvent: (parent, args) => {
-            for (let object of events) {
-                if (object.title === args.title) return object;
-            }
+        FindEvent: async (parent, args) => {
+            return await db.select()
+                .where({title: args.title})
+                .from('events')
+                .first();
         },
-        FindActor: (parent, args) => {
-            for (let object of actors) {
-                if (object.name === args.name) return object;
-            }     
+        FindActor: async (parent, args) => {
+            return await db.select()
+                .where({name: args.name})
+                .from('actors')
+                .first();
         }
     },
     Mutation: {
