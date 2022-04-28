@@ -1,4 +1,3 @@
-const { actors, events } = require("./data");
 const db = require('./knex');
 
 module.exports = {
