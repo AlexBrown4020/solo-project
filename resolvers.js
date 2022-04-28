@@ -26,7 +26,7 @@ module.exports = {
         AddEvent: (parent, args) => {
                 return db.insert(args.input)
                 .into('events')
-                .returning("title");
+                .then((row) => "Added Successfully");
         },
         AddActor: (parent, args) => {
             return db.insert(args.input)
