@@ -31,7 +31,7 @@ module.exports = {
         AddActor: (parent, args) => {
             return db.insert(args.input)
             .into('actors')
-            .returning("name");
+            .then((row) => "Added Successfully");
         },
         DeleteActor: (parent, args) => {
             return db('actors')
