@@ -28,10 +28,11 @@ module.exports = {
                 .into('events')
                 .returning("title");
         },
-        // AddActor: (parent, args) => {
-        //     actors.push(args.input);
-        //     return args.input;
-        // },
+        AddActor: (parent, args) => {
+            return db.insert(args.input)
+            .into('actors')
+            .returning("name");
+        },
         // DeleteActor: (parent, args) => {
         //     for (let object of actors) {
         //         if (args.name === object.name) {
