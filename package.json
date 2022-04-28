@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js",
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "migrate:make":"knex migrate:make",
+    "migrate":"knex migrate:latest",
+    "seed:make":"knex seed:make",
+    "seed":"knex seed:run"
   },
   "repository": {
     "type": "git",
@@ -26,5 +30,8 @@
     "knex": "^2.0.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }

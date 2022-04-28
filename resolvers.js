@@ -1,9 +1,14 @@
 const { actors, events } = require("./data");
+const db = require('./knex');
 
 module.exports = {
     Query: {
-        AllEvents: () => events,
-        AllActors: () => actors,
+        AllEvents: async () => {
+            return await db('events').select('*')
+        },
+        AllActors: async () => {
+            return await db('actors').select('*');
+        },
         FindEvent: (parent, args) => {
             for (let object of events) {
                 if (object.title === args.title) return object;

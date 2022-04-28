@@ -10,6 +10,7 @@ type Event {
 }
 
 type Actor {
+    id: Int
     name: String!
     country: String
 }
