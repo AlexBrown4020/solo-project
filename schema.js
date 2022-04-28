@@ -23,11 +23,13 @@ type Query {
 }
 
 input AddEvent {
+    title: String!
     date: Date!
-    description: String!
+    description: String
 }
 
 input AddActor {
+    id: Int!
     name: String!
     country: String
 }
@@ -44,8 +46,8 @@ input UpdateActor {
 }
 
 type Mutation {
-    AddEvent(input:AddEvent): Event
-    AddActor(input:AddActor): Actor
+    AddEvent(input:AddEvent): String
+    AddActor(input:AddActor): String
     DeleteActor(name:String): String
     DeleteEvent(title:String): String
     UpdateActor(name:String!, input:UpdateActor): String
