@@ -49,16 +49,14 @@ module.exports = {
             return db('actors')
             .where('name', '=', args.name)
             .update(args.input)
-            .then(response => `Actor Updated`);
+            .then(response => 'Actor Updated');
 
         },
-        // UpdateEvent: (parent, args) => {
-        //     for (let object of events) {
-        //         if (object.title === args.title){
-        //             object = args.input;
-        //             return object;
-        //         }
-        //     }
-        // }
+        UpdateEvent: (parent, args) => {
+            return db('events')
+            .where('title', '=', args.title)
+            .update(args.input)
+            .then(response => 'Event Updated');
+        }
     }
 }
