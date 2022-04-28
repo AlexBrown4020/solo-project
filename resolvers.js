@@ -22,7 +22,7 @@ module.exports = {
                 .first();
         }
     },
-    Mutation: {//REMINDER: AddEvent and AddActor do not return what is expected
+    Mutation: {
         AddEvent: (parent, args) => {
                 return db.insert(args.input)
                 .into('events')
@@ -45,17 +45,13 @@ module.exports = {
            .del()
            .then((row) => "Deleted Successfully");
         },
-        // UpdateActor: (parent, args) => {
-        //     for (let object of actors) {
-        //         if (object.name === args.name) {
-        //             const index = actors.indexOf(object);
-        //             actors[index] = args.input;
-        //             return "Actor updated successfully"
-        //         }
-        //     }    
-        //     return "No actor found with that name"
-        //     }
-        // },
+        UpdateActor: (parent, args) => {
+            return db('actors')
+            .where('name', '=', args.name)
+            .update(args.input)
+            .then(response => `Actor Updated`);
+
+        },
         // UpdateEvent: (parent, args) => {
         //     for (let object of events) {
         //         if (object.title === args.title){
