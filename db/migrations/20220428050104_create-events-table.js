@@ -2,14 +2,20 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
-  
+exports.up = async function(knex) {
+  return await knex.schema
+  .createTable("events", function(table) {
+      table.string("title", 64).primary();
+      table.date("date");
+      table.string("description", 64);
+  })
 };
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
-  
+exports.down = async function(knex) {
+    return await knex.schema
+    .dropTable("events");
 };
