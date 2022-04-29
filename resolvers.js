@@ -27,6 +27,11 @@ module.exports = {
                 .from('actors')
                 .first();
         },
+        FindActorsByCountry: async (parent, args) => {
+            return await db.select('*')
+                .where({country: args.country})
+                .from('actors');
+        }
     },
     Mutation: {
         AddEvent: (parent, args) => {
