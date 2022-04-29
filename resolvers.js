@@ -15,6 +15,12 @@ module.exports = {
                 .from('events')
                 .first();
         },
+        FindEventByDate: async (parent, args) => {
+            return await db.select()
+                .where({date: args.date})
+                .from('events')
+                .first();
+        },
         FindActorByName: async (parent, args) => {
             return await db.select()
                 .where({name: args.name})
