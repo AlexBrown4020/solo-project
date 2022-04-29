@@ -1,9 +1,40 @@
- This was created during my time as a student at Code Chrysalis
+ This was created during my time as a student at Code Chrysalis.
 
-Timeline is a tool for visualizing events by date and its associated actors; giving you a clear 
-overview of who or what was involved in events over a time period.
+OUTLINE:
+Timeline is a tool for visualizing events by their date; as well as showing actors directly involved.
+It can also show other events running in parallel and how actors interact or not.  
+The API is intended to help clarify complicated occurances: such as historical events, popular television shows,
+literature and much more.
 
-FEATURES
+FEATURES:
 - REST API GraphQL with CRUD functionality.
 - Allows handling of events and actors for a desired timeline.
-- Apollo Server
+- Apollo Server.
+- Operates tests with Chai and Mocha.
+
+DEPENDENCIES:
+- Apollo-Server
+- GraphQL
+- Knex 
+- Nodemon
+- PostgresQL
+- Chai
+- Mocha
+
+ENDPOINTS:
+Endpoints for timeline are the following:
+
+QUERIES:
+- AllEvents (query all events in the table)
+- AllActors (query all actors in the table)
+- FindEvent(title:"title name") (query a single event by its title)
+- FindActor(name:"actor name") (query a single actor by their name)
+
+MUTATIONS:
+- AddEvent({title:"", date:"YYYY-DD-MM", description:""}) *** Adds events to the table.  Title and date are required, however, titles must be unique. ***
+- AddActor({name:"", country:""}) *** Adds an actor to the table.  An id is incrementally given to new actors ***
+- DeleteEvent(title:"") *** Delete an event of a given title ***
+- DeleteActor(name:"") *** Delete an actor of the given name ***
+- UpdateEvent(title:"", input:{title:"",date:"",description:""}) *** Updates an event with the given title with parameters passed into input ***
+- UpdateActor(name:"", input:{name:"", country:""}) *** Update an actor with the given name with parameters passed into input ***
+

@@ -1,7 +1,4 @@
 const expect = chai.expect;
-const chaiHttp = require('chai-http');
-const { db } = require('./knex')
-
 
 describe('Database', function () {
     it('actors should exist', function () {

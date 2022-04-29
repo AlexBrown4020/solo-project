@@ -9,18 +9,18 @@ module.exports = {
         AllActors: async () => {
             return await db('actors').select('*');
         },
-        FindEvent: async (parent, args) => {
+        FindEventByTitle: async (parent, args) => {
             return await db.select()
                 .where({title: args.title})
                 .from('events')
                 .first();
         },
-        FindActor: async (parent, args) => {
+        FindActorByName: async (parent, args) => {
             return await db.select()
                 .where({name: args.name})
                 .from('actors')
                 .first();
-        }
+        },
     },
     Mutation: {
         AddEvent: (parent, args) => {

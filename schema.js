@@ -18,8 +18,8 @@ type Actor {
 type Query {
     AllEvents: [Event]
     AllActors: [Actor]
-    FindActor(name:String): Actor
-    FindEvent(title:String): Event
+    FindActorByName(name:String): Actor
+    FindEventByTitle(title:String): Event
 }
 
 input AddEvent {
