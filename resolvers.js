@@ -14,11 +14,10 @@ module.exports = {
                 .from('events')
                 .first();
         },
-        FindEventByDate: async (parent, args) => {
-            return await db.select()
+        FindEventsByDate: async (parent, args) => {
+            return await db.select('*')
                 .where({date: args.date})
-                .from('events')
-                .first();
+                .from('events');
         },
         FindActorByName: async (parent, args) => {
             return await db.select()

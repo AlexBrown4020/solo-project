@@ -20,7 +20,7 @@ type Query {
     AllActors: [Actor]
     FindActorByName(name:String): Actor
     FindActorsByCountry(country:String): [Actor]
-    FindEventByDate(date:Date): Event
+    FindEventsByDate(date:Date): [Event]
     FindEventByTitle(title:String): Event
 }
 
