@@ -1,10 +1,19 @@
  This was created during my time as a student at Code Chrysalis.
 
-OUTLINE:
+TIMELINE: 
 Timeline is a tool for visualizing events by their date; as well as showing actors directly involved.
 It can also show other events running in parallel and how actors interact or not.  
 The API is intended to help clarify complicated occurances: such as historical events, popular television shows,
 literature and much more.
+
+GETTING STARTED:
+1. Initialize your project with npm to grab your package.json file ( npm init --yes )
+2. Install your apollo server and graphQL dependencies ( npm install apollo-server graphql )
+3. Install knex globally ( npm install knex -g )
+4. Install your database; in this case, I've used postgresQL.  Make sure to sign up and install it onto your OS
+(https://www.postgresql.org/download/) ( npm install pg )
+5. If you want to try testing, also install Chai and Mocha ( npm install chai mocha )
+6. In your main index.js or server.js file, require the apollo server ( const { ApolloServer } = require('apollo-server'); )
 
 FEATURES:
 - REST API GraphQL with CRUD functionality.
@@ -13,7 +22,7 @@ FEATURES:
 - Operates tests with Chai and Mocha.
 
 DEPENDENCIES:
-- Apollo-Server
+- Apollo-Server 
 - GraphQL
 - Knex 
 - Nodemon
@@ -31,8 +40,6 @@ QUERIES:
 - FindEventsByDate(date: "YYYY-DD-MM") (query all events by a specified date)
 - FindActorByName(name:"actor name") (query a single actor by their name)
 - FindActorsByCountry(country: "country name") (query a group of actors by their country)
-
-
 
 MUTATIONS:
 - AddEvent({title:"", date:"YYYY-DD-MM", description:""}) *** Adds events to the table.  Title and date are required, however, titles must be unique. ***

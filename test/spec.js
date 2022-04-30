@@ -1,4 +1,5 @@
 const expect = chai.expect;
+const chaiHttp = require('chaiHttp');
 import db from 'knex';
 describe('Database', function () {
     it('actors should exist', function () {

@@ -1,3 +1,4 @@
+const { default: knex } = require('knex');
 const db = require('./knex');
 
 module.exports = {
@@ -66,6 +67,6 @@ module.exports = {
             .where('title', '=', args.title)
             .update(args.input)
             .then(response => 'Event Updated');
-        }
+        },
     }
 }
