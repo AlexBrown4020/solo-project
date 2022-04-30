@@ -27,8 +27,10 @@ Endpoints for timeline are the following:
 QUERIES:
 - AllEvents (query all events in the table)
 - AllActors (query all actors in the table)
-- FindEvent(title:"title name") (query a single event by its title)
+- FindEventByTitle(title:"title name") (query a single event by its title)
+- FindEventByDate(date: "YYYY-DD-MM") (query a single date by date format)
 - FindActor(name:"actor name") (query a single actor by their name)
+
 
 MUTATIONS:
 - AddEvent({title:"", date:"YYYY-DD-MM", description:""}) *** Adds events to the table.  Title and date are required, however, titles must be unique. ***
