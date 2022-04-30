@@ -17,6 +17,11 @@ type Actor {
     age: Int
 }
 
+type Involvement {
+    actor_id: Int!
+    event_title: String!
+}
+
 type Query {
     AllEvents: [Event]
     AllActors: [Actor]
@@ -27,6 +32,8 @@ type Query {
     FindActorById(id: Int): Actor
     FindEventsByDate(date:Date): [Event]
     FindEventByTitle(title:String): Event
+    FindInvolvementById(actor_id: Int): [Event]
+    FindInvolvementByTitle(event_title: String): [Actor]
 }
 
 input AddEvent {
@@ -56,6 +63,12 @@ input UpdateActor {
     age: Int
 }
 
+input AddInvolvement {
+    actor_id: Int!
+    event_title: String!
+}
+
+
 type Mutation {
     AddEvent(input:AddEvent): String
     AddActor(input:AddActor): String
@@ -63,6 +76,7 @@ type Mutation {
     DeleteEvent(title:String): String
     UpdateActor(name:String!, input:UpdateActor): String
     UpdateEvent(title:String!, input:UpdateEvent): String
+    AddInvolvement(input:AddInvolvement): String
 }
 
 `

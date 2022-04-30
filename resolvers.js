@@ -84,5 +84,11 @@ module.exports = {
             .update(args.input)
             .then(response => 'Event Updated');
         },
+        AddInvolvement: (parent, args) => {
+            return db.insert(args.id, args.title)
+            .into('involvement')
+            .then((row) => 'Successfully added involvement')
+                    
+        }
     }
 }
