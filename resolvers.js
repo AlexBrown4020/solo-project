@@ -30,6 +30,11 @@ module.exports = {
             return await db.select('*')
                 .where({country: args.country})
                 .from('actors');
+        },
+        FindActorsByDateOfBirth: async (parent, args) => {
+            return await db.select('*')
+            .where({date_of_birth: args.date_of_birth})
+            .from('actors');
         }
     },
     Mutation: {
