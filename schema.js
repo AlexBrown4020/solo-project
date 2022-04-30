@@ -13,6 +13,8 @@ type Actor {
     id: Int!
     name: String!
     country: String
+    date_of_birth: Date
+    age: Int
 }
 
 type Query {
@@ -34,6 +36,8 @@ input AddActor {
     id: Int!
     name: String!
     country: String
+    date_of_birth: Date
+    age: Int
 }
 
 input UpdateEvent {
@@ -45,6 +49,8 @@ input UpdateEvent {
 input UpdateActor {
     name: String
     country: String
+    date_of_birth: Date
+    age: Int
 }
 
 type Mutation {
