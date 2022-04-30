@@ -35,6 +35,17 @@ module.exports = {
             return await db.select('*')
             .where({date_of_birth: args.date_of_birth})
             .from('actors');
+        },
+        FindActorsByAge: async (parent, args) => {
+            return await db.select('*')
+            .where({age: args.age})
+            .from('actors');
+        },
+        FindActorById: async (parent, args) => {
+            return await db.select()
+            .where({id: args.id})
+            .from('actors')
+            .first();
         }
     },
     Mutation: {
