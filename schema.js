@@ -78,7 +78,5 @@ type Mutation {
     UpdateEvent(title:String!, input:UpdateEvent): String
     AddInvolvement(input:AddInvolvement): String
 }
-
 `
-
 module.exports = typeDefs;

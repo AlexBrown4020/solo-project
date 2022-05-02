@@ -7,5 +7,5 @@ const PORT = process.env.PORT || 4000;
 const server = new ApolloServer({ resolvers, typeDefs });
 
 server.listen(PORT, () => {
-    console.log(`Server ready at port ${PORT}`)
+    console.log(`Server ready at port ${PORT}`);
 });
