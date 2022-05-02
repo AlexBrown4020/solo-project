@@ -45,6 +45,16 @@ module.exports = {
             .where({id: args.id})
             .from('actors')
             .first();
+        },
+        FindInvolvementById: async (parent, args) => {
+            return await db.select()
+            .where({actor_id: args.actor_id})
+            .from('involvement');
+        },
+        FindInvolvementByTitle: async (parent, args) => {
+            return await db.select()
+            .where({event_title: args.event_title})
+            .from('involvement');
         }
     },
     Mutation: {
@@ -83,9 +93,10 @@ module.exports = {
             .then(response => 'Event Updated');
         },
         AddInvolvement: (parent, args) => {
-            return db.insert(args.id, args.title)
+            return db.insert(args.input)
             .into('involvement')
             .then((row) => 'Successfully added involvement')  
-        }
+        },
+
     }
 }
