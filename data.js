@@ -6,7 +6,7 @@ const events = [
         description: "CCP4 started Code Chrysalis."
     },
     {
-        title:"Half Way",
+        title:"Half-Way",
         date: "2022-04-18",
         description: "CCP4 started their laundry week."
     },
