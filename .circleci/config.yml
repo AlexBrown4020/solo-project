@@ -1,14 +1,7 @@
 version: 2.1
-jobs:
-  say-hello:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+orbs:
+  heroku: circleci/heroku@0.0.10
 workflows:
-  say-hello-workflow:
+  heroku_deploy:
     jobs:
-      - say-hello
+      - heroku/deploy-via-git
