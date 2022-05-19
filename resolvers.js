@@ -3,7 +3,7 @@ const db = require('./knex');
 module.exports = {
     Query: {
         AllEvents: async () => {
-            return await db('events').select('*')
+            return await db('events').select('*');
         },
         AllActors: async () => {
             return await db('actors').select('*');
@@ -45,13 +45,23 @@ module.exports = {
             .where({id: args.id})
             .from('actors')
             .first();
+        },
+        FindInvolvementById: async (parent, args) => {
+            return await db.select()
+            .where({actor_id: args.actor_id})
+            .from('involvement');
+        },
+        FindInvolvementByTitle: async (parent, args) => {
+            return await db.select()
+            .where({event_title: args.event_title})
+            .from('involvement');
         }
     },
     Mutation: {
         AddEvent: (parent, args) => {
-                return db.insert(args.input)
-                .into('events')
-                .then((row) => "Added Successfully");
+            return db.insert(args.input)
+            .into('events')
+            .then((row) => "Added Successfully");
         },
         AddActor: (parent, args) => {
             return db.insert(args.input)
@@ -75,7 +85,6 @@ module.exports = {
             .where('name', '=', args.name)
             .update(args.input)
             .then(response => 'Actor Updated');
-
         },
         UpdateEvent: (parent, args) => {
             return db('events')
@@ -84,10 +93,10 @@ module.exports = {
             .then(response => 'Event Updated');
         },
         AddInvolvement: (parent, args) => {
-            return db.insert(args.id, args.title)
+            return db.insert(args.input)
             .into('involvement')
-            .then((row) => 'Successfully added involvement')
-                    
-        }
+            .then((row) => 'Successfully added involvement')  
+        },
+
     }
 }

@@ -32,8 +32,8 @@ type Query {
     FindActorById(id: Int): Actor
     FindEventsByDate(date:Date): [Event]
     FindEventByTitle(title:String): Event
-    FindInvolvementById(actor_id: Int): [Event]
-    FindInvolvementByTitle(event_title: String): [Actor]
+    FindInvolvementById(actor_id: Int): [Involvement]
+    FindInvolvementByTitle(event_title: String): [Involvement]
 }
 
 input AddEvent {
@@ -78,7 +78,5 @@ type Mutation {
     UpdateEvent(title:String!, input:UpdateEvent): String
     AddInvolvement(input:AddInvolvement): String
 }
-
 `
-
 module.exports = typeDefs;
