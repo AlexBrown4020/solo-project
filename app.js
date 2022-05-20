@@ -12,7 +12,7 @@ const serverSetup = () => {
         )
     );
     
-    app.use(express.static(path.join(__dirname + './dist/index')));
+    app.use(express.static(path.resolve(__dirname, './dist/index.html')));
     app.use(cors()) //at somepoint you will want to make sure only authorized domains can access this server
     app.get('/api/events', async (req, res) => {
         try {
@@ -25,8 +25,8 @@ const serverSetup = () => {
     });
     
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname + './dist/index'))
+        res.sendFile(path.resolve(__dirname + '/dist/index.html'))
     });
-    return app; //configured instance of express{} /at somepoint you will want to make sure only authorized domains can access this server
+    return app; //configured instance of express{} //at somepoint you will want to make sure only authorized domains can access this server
 }
 module.exports = serverSetup;
