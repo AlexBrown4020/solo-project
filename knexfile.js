@@ -6,7 +6,7 @@ require("dotenv").config({path: "./.env.local"});
    */
 module.exports = {
     client: "pg",
-    connection: process.env.DB_URL || 
+    connection: process.env.DATABASE_URL || 
       {
         host: process.env.DB_HOST || "127.0.0.1",
         port: process.env.DB_PORT || 5432,
