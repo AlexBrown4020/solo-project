@@ -27,6 +27,6 @@ const serverSetup = () => {
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname + '/dist/index.html'))
     });
-    return app; //configured instance of express{} //at somepoint you will want to make sure only authorized domains can access this server
+    return app; //configured instance of express{} /at somepoint you will want to make sure only authorized domains can access this server
 }
 module.exports = serverSetup;
