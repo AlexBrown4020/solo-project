@@ -1,7 +1,8 @@
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const db = require('knex');
+const db = require('./knex');
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(
 );
 
 app.use(express.static(path.resolve(__dirname, '..', 'dist')));
-
+app.use(cors())
 app.get('/api/events', async (req, res) => {
     try {
         const events = await db.select().table('events');
