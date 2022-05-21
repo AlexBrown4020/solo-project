@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(event, index) in events" v-bind:key="index" class="eventCard">
+     <div v-for="(event, index) in events" v-bind:key="index" class="eventCard">
      <h3>Title: {{ event.title }} </h3>
      <h3>Date: {{ event.date }}</h3>
      <p>Description: {{ event.description }}</p>
@@ -13,7 +13,7 @@ export default {
   name: 'EventsCard',
   data() {
     return {
-
+      events: "Events"
     }
   },
     created: async function() {
