@@ -1,36 +1,40 @@
 <template>
   <div id="app">
-    <AddEvent/>
+    <addEvent/>
     <h1>Welcome to Timeline</h1>
-    <Events/>
+     <div v-for="(event, index) in events" v-bind:key="index" class="eventCard">
+     <h3>Title: {{ event.title }} </h3>
+     <h3>Date: {{ event.date }}</h3>
+     <p>Description: {{ event.description }}</p>
+  </div>
   </div>
 </template>
 
 <script>
-
-import Events from "./components/Events.vue"
+// import Events from "./components/Events.vue"
 import AddEvent from "./components/AddEvent.vue"
 import axios from 'axios'
+
 export default {
   name: 'App',
   components: {
-    Events,
-    AddEvent
+    // events: Events,
+    addEvent: AddEvent
   },
   data() {
     return {
-      post: null,
+      events: "Events"
     };
   },
   created: async function() {
     await axios
     .get("https://new-timeline.herokuapp.com/graphql")
     .then(result => {
-      this.post = result.data;
-      console.log(result.data)
+      this.events = result.data;
     })
   }
 }
+
 </script>
 
 <style>
