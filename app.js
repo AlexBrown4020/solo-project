@@ -12,7 +12,7 @@ const serverSetup = () => {
         )
     );
     
-    app.use(express.static(path.resolve(__dirname, '..', './dist')));
+    app.use(express.static(path.resolve(__dirname, '..', 'dist')));
     app.use(cors()) //at somepoint you will want to make sure only authorized domains can access this server
     app.get('*', async (req, res) => {
         try {
