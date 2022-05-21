@@ -1,19 +1,17 @@
 <template>
 <div>
       <h1>Welcome to Timeline</h1>
-      <HelloWorld/>
       <p>{{this.post}}</p>
   </div>
 </template>
 
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
 import axios from 'axios'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
   },
   data() {
     return {

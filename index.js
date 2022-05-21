@@ -14,7 +14,7 @@ const db = require('./knex');
   await server.start();
   await db.migrate.latest();
   await db.seed.run();
-  server.applyMiddleware({ app })
+  server.applyMiddleware({ app, path: "/" });
   app.listen(PORT, () => {
       console.log(`Server ready at port ${PORT}`);
   });
