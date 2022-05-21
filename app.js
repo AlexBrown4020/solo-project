@@ -1,4 +1,3 @@
-const { table } = require('console');
 const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
@@ -18,7 +17,9 @@ const serverSetup = () => {
     app.get('*', async (req, res) => {
         try {
             const events = await db.select().table('events');
+            const actors = await db.select().table('actors');
             res.json(events);
+            res.json(actors);
         } catch (err) {
             console.error('Error loading events', err);
             res.sendStatus(500);
