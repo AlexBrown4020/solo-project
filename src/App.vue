@@ -20,7 +20,7 @@ export default {
   },
   created: async function() {
     await axios
-    .get("https://new-timeline.herokuapp.com/graphql/events")
+    .get("https://new-timeline.herokuapp.com/graphql")
     .then(result => {
       this.post = result.data;
       console.log(result.data)
