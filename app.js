@@ -18,8 +18,7 @@ const serverSetup = () => {
     app.get('*', async (req, res) => {
         try {
             const events = await db.select().table('events');
-            const actors = await db.select().table('actors');
-            res.json(events, actors);
+            res.json(events);
         } catch (err) {
             console.error('Error loading events', err);
             res.sendStatus(500);
