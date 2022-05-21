@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const db = require('./knex');
+//const db = require('./knex');
 
 const serverSetup = () => {
     const app = express();
@@ -12,20 +12,20 @@ const serverSetup = () => {
         )
     );
     
-    app.use(express.static(path.resolve(__dirname, './dist/index.html')));
+    app.use(express.static(path.join(__dirname, "/dist"))); //__dirname, "..", "dist"
     app.use(cors()) //at somepoint you will want to make sure only authorized domains can access this server
-    app.get('*', async (req, res) => {
-        try {
-            const events = await db.select().table('events');
-            res.json(events);
-        } catch (err) {
-            console.error('Error loading events', err);
-            res.sendStatus(500);
-        }
-    });
+    // app.get('*', async (req, res) => {
+    //     try {
+    //         const events = await db.select().table('events');
+    //         res.json(events);
+    //     } catch (err) {
+    //         console.error('Error loading events', err);
+    //         res.sendStatus(500);
+    //     }
+    // });
     
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname + '/dist/index.html'))
+        res.sendFile(path.resolve(__dirname, "..", "dist", "index.html")) //__dirname, "..", "dist", "index.html"
     });
     return app; //configured instance of express{} //at somepoint you will want to make sure only authorized domains can access this server
 }

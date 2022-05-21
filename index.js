@@ -12,7 +12,7 @@ const db = require('./knex');
     typeDefs,
   });
   await server.start();
-  server.applyMiddleware({ app });
+  server.applyMiddleware({ app, path: "/" });
   await db.migrate.latest();
   await db.seed.run();
   app.listen(PORT, () => {
