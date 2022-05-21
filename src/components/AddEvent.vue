@@ -1,4 +1,6 @@
 <template>
+<div>
+  <h2>Add Event</h2>
  <form @submit="submit">
   <fieldset>
       <input type="text" placeholder="Title" v-model="title">
@@ -7,6 +9,7 @@
   </fieldset>   
   <input class="button-primary" type="submit" value="Send">
  </form>
+ </div>
 </template>
 
 <script>
