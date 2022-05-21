@@ -12,9 +12,9 @@ const db = require('./knex');
     typeDefs,
   });
   await server.start();
+  server.applyMiddleware({ app });
   await db.migrate.latest();
   await db.seed.run();
-  server.applyMiddleware({ app });
   app.listen(PORT, () => {
       console.log(`Server ready at port ${PORT}`);
   });
